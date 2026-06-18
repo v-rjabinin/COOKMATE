@@ -1,0 +1,6 @@
+path: /home/zomberep/Desktop/All_for_CookMate/yolo_dataset
+train: images/train
+val: images/val
+
+
+names: ['apple', 'bacon', 'banana', 'bell_pepper', 'bread', 'butter', 'cabbage', 'canned_beans', 'canned_corn', 'canned_fish', 'canned_peas', 'carrot', 'cheese', 'chicken', 'chocolate', 'coffee', 'condensed_milk', 'corn', 'cottage_cheese', 'cream', 'cream_cheese', 'cucumber', 'egg', 'eggplant', 'flatbread', 'garlic', 'ginger', 'gourd', 'herbs', 'honey', 'juice', 'kefir', 'ketchup', 'lemon', 'lettuce', 'mayonnaise', 'meat', 'milk', 'minced_meat', 'mustard', 'onion', 'orange', 'pasta', 'peas', 'pickle', 'pineapple', 'potato', 'pumpkin', 'rice', 'sausage', 'shrimp', 'sour_cream', 'soy_sauce', 'spices', 'spinach', 'strawberry', 'tea', 'tomato', 'tomato_paste', 'turkey', 'watermelon', 'white_fish', 'yogurt']
