@@ -2,21 +2,30 @@ from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from ultralytics import YOLO
 import cv2
+import os
 import numpy as np
 from typing import List, Dict
 import torch
 
 app = FastAPI(title="CookMate Food Detector")
 
-# загружаем обе модели при старте
-print("Загрузка моделей...")
-model_nano = YOLO("./models/nano/model.pt")
-model_small = YOLO("./models/small/model.pt")
-print("✅ Модели загружены")
+MODEL_DIR = os.getenv("MODEL_DIR", "./models")
+MODEL_NANO_PATH = os.path.join(MODEL_DIR, "yolo11n_best.pt")
+MODEL_SMALL_PATH = os.path.join(MODEL_DIR, "yolo11s_best.pt")
 
-CONF_NANO = 0.30
-CONF_SMALL = 0.75
-IOU_NMS = 0.50
+CONF_NANO = float(os.getenv("CONF_NANO", "0.30"))
+CONF_SMALL = float(os.getenv("CONF_SMALL", "0.75"))
+IOU_NMS = float(os.getenv("IOU_NMS", "0.45"))
+
+if not os.path.exists(MODEL_NANO_PATH):
+    raise RuntimeError(f"Модель nano не найдена: {MODEL_NANO_PATH}")
+if not os.path.exists(MODEL_SMALL_PATH):
+    raise RuntimeError(f"Модель small не найдена: {MODEL_SMALL_PATH}")
+
+print(f"Загрузка моделей из {MODEL_DIR}...")
+model_nano = YOLO(MODEL_NANO_PATH)
+model_small = YOLO(MODEL_SMALL_PATH)
+print(f"Модели загружены! | Nano conf={CONF_NANO}, Small conf={CONF_SMALL}")
 
 
 def run_prediction(model, img, conf: float) -> List[Dict]:

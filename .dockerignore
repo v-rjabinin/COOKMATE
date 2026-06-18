@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.git/
+.gitattributes
+.github/
+data/
+*.md
+.env
+.vscode/
+.idea/
