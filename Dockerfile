@@ -1,8 +1,5 @@
 FROM python:3.12-slim
 
-LABEL maintainer="CookMate Team"
-LABEL description="Food detection API with YOLOv11 ensemble"
-
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \

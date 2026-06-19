@@ -1,10 +1,8 @@
-version: "3.9"
-
 services:
   cookmate-api:
     build:
       context: .
-      dockerfile: Dockerfile   # Dockerfile.gpu for GPU
+      dockerfile: Dockerfile # Dockerfile.gpu for GPU
     container_name: cookmate-api
     restart: unless-stopped
     ports:
@@ -14,6 +12,7 @@ services:
     environment:
       - CONF_NANO=0.30
       - CONF_SMALL=0.75
+      - IOU_NMS=0.45
       - MODEL_DIR=/app/models
     # Для GPU:
     # deploy:
